@@ -51,8 +51,6 @@ CXX_LIBRARY_WHITELIST = [
 ]
 
 SUPPRESSION_FLAGS = [
-    "-Wno-error=enum-float-conversion",
-    "-Wno-error=implicit-float-conversion",
 ]
 
 BASE_COMPILER_FLAGS = [
