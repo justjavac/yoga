@@ -4272,6 +4272,18 @@ YOGA_EXPORT void YGNodeCalculateLayout(
       node, ownerWidth, ownerHeight, ownerDirection, nullptr);
 }
 
+YOGA_EXPORT void YGNodeCalculateLayoutWithMagicNAN(
+    const YGNodeRef node,
+    const float ownerWidth,
+    const float ownerHeight,
+    const YGDirection ownerDirection) {
+  const float Magic_NAN = -123456790.88;
+  float width = ownerWidth == Magic_NAN ? YGUndefined : ownerWidth;
+  float height = ownerHeight == Magic_NAN ? YGUndefined : ownerHeight;
+
+  YGNodeCalculateLayoutWithContext(node, width, height, ownerDirection, nullptr);
+}
+
 YOGA_EXPORT void YGConfigSetLogger(const YGConfigRef config, YGLogger logger) {
   if (logger != nullptr) {
     config->setLogger(logger);
