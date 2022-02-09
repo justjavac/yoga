@@ -41,6 +41,7 @@ jobs:
           buck --version
 
       - name: Build
+        if: startsWith(matrix.os, 'ubuntu') || startsWith(matrix.os, 'macOS')
         run: buck build //:yoga#default,shared
 
       - name: Release
