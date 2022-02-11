@@ -11,7 +11,7 @@ set(CMAKE_VERBOSE_MAKEFILE on)
 
 file(GLOB_RECURSE yogacore_SRC yoga/*.cpp)
 
-if (!WIN32)
+if (NOT WIN32)
     add_compile_options(
             -fno-omit-frame-pointer
             -fexceptions
@@ -45,4 +45,3 @@ else()
     set_target_properties(yogacore PROPERTIES CXX_STANDARD 11)
     # target_compile_options(yogacore-win PRIVATE /D_WINDOWS /GR /EHsc /MDd /Zi /O2 /W4 /O2 /Be /Bd /EP)
 endif ()
-
