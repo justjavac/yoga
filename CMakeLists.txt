@@ -21,7 +21,7 @@ if (NOT WIN32)
             -Wall
             -std=c++11)
 
-    add_library(yogacore STATIC ${yogacore_SRC})
+    add_library(yogacore SHARED ${yogacore_SRC})
 
     target_include_directories(yogacore PUBLIC .)
     if( ANDROID )
