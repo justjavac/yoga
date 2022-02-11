@@ -55,7 +55,14 @@ jobs:
           cmake --build . -- /property:Configuration=Release
 
       - name: Release
+<<<<<<< HEAD
         if: ${{ startsWith(github.repository, 'justjavac') && github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+=======
+        if: |
+          startsWith(github.repository, 'justjavac') &&
+          github.ref == 'refs/heads/main' &&
+          github.event_name == 'push'
+>>>>>>> main
         uses: justjavac/action-gh-push@v1
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
