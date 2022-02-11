@@ -29,17 +29,6 @@ jobs:
           export PATH=$PATH:$HOME/buck/bin/
           buck --version
 
-      - name: Install dependencies (windows)
-        if: startsWith(matrix.os, 'windows')
-        run: |
-          choco install -y cmake
-
-      - name: Setup VS Dev Environment
-        if: startsWith(matrix.os, 'windows')
-        uses: microsoft/setup-msbuild@v1.1
-        with:
-          msbuild-architecture: x64
-
       - name: Build
         if: startsWith(matrix.os, 'ubuntu') || startsWith(matrix.os, 'macOS')
         run: buck build //:yoga#default,shared
