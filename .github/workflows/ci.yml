@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies (windows)
         if: startsWith(matrix.os, 'windows')
         run: |
-          choco install -y cmake visualstudio2019enterprise
+          choco install -y cmake visualstudio2019buildtools
 
       - name: Setup VS Dev Environment
         if: startsWith(matrix.os, 'windows')
