@@ -51,9 +51,10 @@ jobs:
           cmake -DCMAKE_CXX_COMPILER=cl.exe -A x64 ..
           cmake --build . -- /property:Configuration=Release
 
-
       - name: Release
-        if: startsWith(github.repository, 'justjavac')
+        if: |
+          startsWith(github.repository, 'justjavac') &&
+          ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         uses: justjavac/action-gh-push@v1
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
