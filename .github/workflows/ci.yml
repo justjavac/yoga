@@ -29,14 +29,17 @@ jobs:
           export PATH=$PATH:$HOME/buck/bin/
           buck --version
 
-      - name: Setup VS Dev Environment
-        if: startsWith(matrix.os, 'windows')
-        uses: seanmiddleditch/gha-setup-vsdevenv@v4
-
       - name: Install dependencies (windows)
         if: startsWith(matrix.os, 'windows')
         run: |
-          choco install -y cmake
+          choco install -y cmake visualstudio2019buildtools
+
+      - name: Setup VS Dev Environment
+        if: startsWith(matrix.os, 'windows')
+        uses: microsoft/setup-msbuild@v1.1
+        with:
+          msbuild-architecture: x64
+          vs-version: '[16,17)'
 
       - name: Build
         if: startsWith(matrix.os, 'ubuntu') || startsWith(matrix.os, 'macOS')
@@ -48,13 +51,11 @@ jobs:
           mkdir build && cd build
           # cmake -G "Visual Studio 17 2022" -A x64 ..
           cmake -G "Visual Studio 16 2019" -A x64 ..
+          # cmake -DCMAKE_CXX_COMPILER=cl.exe -A x64 ..
           cmake --build . -- /property:Configuration=Release
 
       - name: Release
-        if: |
-          startsWith(github.repository, 'justjavac') &&
-          github.ref == 'refs/heads/main' &&
-          github.event_name == 'push'
+        if: ${{ startsWith(github.repository, 'justjavac') && github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         uses: justjavac/action-gh-push@v1
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
