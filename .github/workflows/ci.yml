@@ -25,7 +25,7 @@ jobs:
         run: |
           mkdir build && cd build
           cmake -G Ninja ..
-          cmake --build . -- config Release
+          cmake --build . --config Release
 
       - name: Build (Windows)
         if: startsWith(matrix.os, 'windows')
