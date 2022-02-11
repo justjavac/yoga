@@ -50,13 +50,13 @@ jobs:
           cmake --build . -- /property:Configuration=Release
 
 
-      - name: Release
-        uses: CGQAQ/action-gh-push@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-        with:
-          repository: justjavac/yoga.dll
-          files: |
-            buck-out/gen/yoga#default,shared/libyogacore.dylib
-            buck-out/gen/yoga#default,shared/libyogacore.so
-            build/Release/yogacore.dll
+      # - name: Release
+      #   uses: justjavac/action-gh-push@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+      #   with:
+      #     repository: justjavac/yoga.dll
+      #     files: |
+      #       buck-out/gen/yoga#default,shared/libyogacore.dylib
+      #       buck-out/gen/yoga#default,shared/libyogacore.so
+      #       build/Release/yogacore.dll
