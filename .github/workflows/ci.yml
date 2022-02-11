@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        uses: seanmiddleditch/gha-setup-ninja@master
+      - uses: seanmiddleditch/gha-setup-ninja@master
 
       - name: Setup VS Dev Environment
         if: startsWith(matrix.os, 'windows')
