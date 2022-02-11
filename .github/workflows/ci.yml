@@ -45,6 +45,6 @@ jobs:
         with:
           repository: justjavac/yoga.dll
           files: |
-            buck-out/gen/yoga#default,shared/libyogacore.dylib
-            buck-out/gen/yoga#default,shared/libyogacore.so
+            build/libyogacore.dylib
+            build/libyogacore.so
             build/Release/yogacore.dll
