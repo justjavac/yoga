@@ -23,8 +23,8 @@ jobs:
         if: startsWith(matrix.os, 'ubuntu') || startsWith(matrix.os, 'macOS')
         run: |
           mkdir build && cd build
-          cmake -A x64 ..
-          cmake --build .
+          cmake -G Ninja ..
+          cmake --build . -- config Release
 
       - name: Build (Windows)
         if: startsWith(matrix.os, 'windows')
